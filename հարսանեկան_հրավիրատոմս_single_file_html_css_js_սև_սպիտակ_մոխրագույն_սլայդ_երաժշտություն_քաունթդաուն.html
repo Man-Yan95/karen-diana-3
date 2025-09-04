@@ -5,11 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ԿԱՐԵՆ & ԱՇԽԵՆ — Հարսանեկան հրավիրատոմս</title>
   <style>
+    @font-face {
+  font-family: 'EagleLake-Regular';
+  src: url(./assets/fonts/Eagle_Lake/EagleLake-Regular.ttf);
+}
     :root {
       --bg:#616163; --panel:#44464c; --panel-2:#343639;
       --text:#fcfcfc; --muted:#ffffff; --accent:#f5f5f5;
       --shadow:0 6px 24px rgba(41,40,40,.35);
       --radius:18px;
+    }
+    
+    .content {
+      overflow:hidden; /* որ վերևից իջնելուց թաքցնի */
+    }
+
+    .names {
+      font-size: clamp(24px, 6vw, 52px);
+      font-weight:700;
+      letter-spacing: .08em;
+      animation: dropDown 5s ease forwards;
+    }
+
+    .subtitle, .lead {
+      opacity:0;
+      transform:translateY(40px);
+      animation: fadeUp 3s ease forwards;
+    }
+
+    .subtitle {
+      animation-delay: 3s; /* հետո, երբ անունը ավարտի */
+      font-size: clamp(16px, 3vw, 22px);
+      margin-top:16px;
+       color:var(--muted);
+    }
+
+    .lead { color:var(--accent);
+      animation-delay: 5s; /* անուն + subtitle հետո */
+      font-size: clamp(18px, 3vw, 26px);
+      margin-top:8px;
+      font-weight:500;
+  
     }
     /* Hero content ռեսպոնսիվ և կենտրոնացված */
 .hero .content{
@@ -28,24 +64,29 @@
 /* Text scaling */
 .hero .names{font-size:clamp(16px,6vw,72px)}
 .hero .subtitle{font-size:clamp(10px,3vw,20px)}
-.hero .pill{font-size:clamp(8px,2.5vw,16px);padding:4px 8px}
+.hero .pill{font-size:clamp(12px,2.5vw,20px);padding:4px 8px}
 
 .hero .bg-img{
   width:100%;
   height:100%;
   object-fit:cover;  /* պահպանվում է aspect ratio */
-  max-height:100vh;  /* երբեք չի բարձրանա viewport-ից */
+  max-height:100vh; 
+  border-radius: 18px; /* երբեք չի բարձրանա viewport-ից */
 }
 
     *{box-sizing:border-box ; width: 100%;max-width: 1000px;}
-    body{margin:0;font-family:sans-serif;color:var(--text);background:var(--bg)}
+    body{margin:0;color:var(--text);background:var(--bg);  };  
+    @font-face {
+  font-family: 'EagleLake-Regular';
+  src: url(./assets/fonts/Eagle_Lake/EagleLake-Regular.ttf);
+} 
     a{text-decoration:none;color:inherit}
     .shell{ width: 100%; height: 100%;min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
     header{position:sticky;top:0;background:rgba(0,0,0,.4);backdrop-filter:blur(6px)}
     header .row{display:flex;align-items:center;gap:12px;padding:10px 16px}
-    .brand{font-weight:700;letter-spacing:.2em;transition-duration:  3s ease  ;}
+    .brand{font-weight:700;letter-spacing:.2em;transition-duration:  3s ease  ; }
     .timer{margin-left:auto;display:flex;gap:6px ;width: 30px;height: 30px;     flex-direction: row-reverse;}
-    .pill{background:var(--panel);padding:6px 10px;border-radius:999px;box-shadow:var(--shadow)}
+    .pill{background:var(--panel);padding:6px 10px;border-radius:999px;box-shadow:var(--shadow);width: 40px; height: 40px;}
     .slider{overflow:hidden;position:relative;height:90vh}
     .slides{display:flex;flex-direction:column;transition:15s ease}
     .slide{min-height:100vh;display:grid;place-items:center;position:relative}
@@ -53,25 +94,33 @@
     .hero .bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
     .hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.4)}
     .names{font-size:clamp(28px,6vw,72px);font-weight:800}
-    .subtitle{color:var(--muted)}
     .card{background:var(--panel);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin:16px}
-    .inner{padding:15px;display:grid;gap:12px}
+    .inner{padding:15px;display:grid;gap:12px;}
     .title{font-size:22px;font-weight:700}
-    .lead{color:var(--accent)}
+   
     .row-item{padding:12px;background:var(--panel-2);border-radius:12px;cursor:pointer}
-    .media img{width:100%;height:400px;object-fit:cover}
+    .media img{width:100%;height:410px;object-fit:cover}
     .media .caption{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,.5);padding:6px 10px;border-radius:8px}
     .cta .title{font-size:24px}
-    .black{background:#000;color:#fff;padding:36px;text-align:center}
+    .black{background:#000;color:#fff;padding:26px;text-align:center}
     .black .btn{display:inline-block;margin-top:12px;padding:10px 16px;border-radius:999px;background:#111}
     .phone-fab{position:fixed;right:14px;bottom:14px}
-    .fab-btn{width:56px;height:56px;border-radius:50%;border:1px solid #333;background:var(--panel);cursor:pointer}
+    .fab-btn{width:56px;height:56px;border-radius:50%;border:1px solid #333;background:var(--panel);cursor:pointer; display: grid;justify-content: center ;align-items: center;}
     .call-sheet{position:fixed;inset:0;display:none;place-items:end center;background:rgba(0,0,0,.6)}
     .call-sheet.active{display:grid}
     .sheet{width:95%;max-width:480px;background:#0b0b0c;border-radius:16px 16px 0 0;padding:16px}
     .nums{display:grid;gap:10px}
     .num{display:flex;justify-content:space-between;padding:12px;background:#151518;border-radius:12px}
     footer{text-align:center;padding:12px;color:#aaa}
+      @keyframes dropDown {
+      0% { transform: translateY(-120%); opacity:0; }
+      100% { transform: translateY(0); opacity:1; }
+    }
+
+    @keyframes fadeUp {
+      0% { opacity:0; transform: translateY(40px); }
+      100% { opacity:1; transform: translateY(0); }
+    };
     /* 850px և փոքր */
 @media (max-width:850px){
   header .row{flex-direction:column;align-items:flex-start;gap:8px}
@@ -168,31 +217,36 @@
 <body>
   <div class="shell">
     <header>
-      <div class="row">
-        <div class="brand">ԿԱՐԵՆ & ԱՇԽԵՆ</div>
-        <div class="timer">
-          <span class="pill" id="d">00</span>
-          <span class="pill" id="h">00</span>
-          <span class="pill" id="m">00</span>
-          <span class="pill" id="s">00</span>
-        </div>
-      </div>
+     <div class="row">
+    <div class="brand">ԿԱՐԵՆ & ԱՇԽԵՆ</div>
+    <div class="timer" aria-live="polite" style="  font-family: 'EagleLake-Regular';" aria-label="հետհաշվարկ">
+       <span class="pill" id="s">00</span>
+        <span class="pill" id="m">00</span>
+        <span class="pill" id="h">00</span>
+        <span class="pill" id="d">00</span>
+     
+     
+     
+    </div>
+ 
+  </div>
+
     </header>
 
-    <main class="slider">
+    <main class="slider" style="font-family:'EagleLake-Regular' ;">
       <div class="slides" id="slides">
 
         <section class="slide hero">
           <img class="bg-img" src="assets/img/ashxen1.jpg" alt="">
           <div class="content">
-            <div class="names">ԿԱՐԵՆ & ԱՇԽԵՆ</div>
+            <div class="names">ԿԱՐԵՆ և ԱՇԽԵՆ</div>
             <p class="subtitle">Սիրով հրավիրում ենք ձեզ մեր հարսանեկան արարողությանը</p>
             <p class="lead">Հոկտեմբեր 10 — 2025</p>
           </div>
         </section>
 
         <section class="slide">
-          <div class="card"><div class="inner">
+          <div class="card"> <img src="./assets/img/WhatsApp.jpg" alt=""><div class="inner">
             <div class="title">Սիրով հրավիրում ենք ձեզ</div>
             <p class="lead">Մեզ համար մեծ ուրախություն կլինի, եթե մասնակցեք ու կիսեք մեր օրը։</p>
           </div></div>
@@ -226,9 +280,10 @@
 
         <section class="slide cta">
           
-          <div class="card"><div class="inner" style="text-align:center">
+          <div class="card"><img src="./assets/img/ashxen.jpg" alt=""><div class="inner" style="align-content: center; justify-items: center; align-items: center;">
+            
             <div class="title">Ուրախ կլինենք, եթե միանաք մեզ 🤍</div>
-            <button class="fab-btn" id="fab-call">📞</button>
+            <button class="fab-btn"  id="fab-call">📞</button>
           </div></div>
         </section>
 
@@ -264,18 +319,44 @@
 
   <script>
     // countdown
-    const target=new Date('2025-10-10T00:00:00');
-    const [dEl,hEl,mEl,sEl]=['d','h','m','s'].map(id=>document.getElementById(id));
-    setInterval(()=>{const now=new Date();let diff=target-now;
-      const d=Math.floor(diff/86400000); diff-=d*86400000;
-      const h=Math.floor(diff/3600000); diff-=h*3600000;
-      const m=Math.floor(diff/60000); diff-=m*60000;
-      const s=Math.floor(diff/1000);
-      dEl.textContent=String(d).padStart(2,'0');
-      hEl.textContent=String(h).padStart(2,'0');
-      mEl.textContent=String(m).padStart(2,'0');
-      sEl.textContent=String(s).padStart(2,'0');
-    },1000);
+  const target = new Date(2025, 9, 10, 0, 0, 0);
+
+    const dEl = document.getElementById('d');
+    const hEl = document.getElementById('h');
+    const mEl = document.getElementById('m');
+    const sEl = document.getElementById('s');
+
+    const DAY = 86_400_000, HOUR = 3_600_000, MIN = 60_000, SEC = 1_000;
+
+    function pad2(n){ return String(n).padStart(2,'0'); }
+
+    function tick(){
+      const now = new Date();
+      let diff = target - now;
+
+      if (diff <= 0){
+        // հասել ենք կամ անցել — ամենը 00
+        dEl.textContent = '00';
+        hEl.textContent = '00';
+        mEl.textContent = '00';
+        sEl.textContent = '00';
+        return; // թողնում ենք կանգնի 00-ների վրա
+      }
+
+      const d = Math.floor(diff / DAY);   diff -= d * DAY;
+      const h = Math.floor(diff / HOUR);  diff -= h * HOUR;
+      const m = Math.floor(diff / MIN);   diff -= m * MIN;
+      const s = Math.floor(diff / SEC);
+
+      dEl.textContent = pad2(d);
+      hEl.textContent = pad2(h);
+      mEl.textContent = pad2(m);
+      sEl.textContent = pad2(s);
+    }
+
+    // Անմիջապես թարմացնել, հետո՝ ամեն վայրկյան
+    tick();
+    setInterval(tick, 1000);
 
     // music
     const audio=document.getElementById('music');
@@ -288,15 +369,71 @@
     sheet.onclick=e=>{if(e.target===sheet)sheet.classList.remove('active');}
 
     // slider
-    const slides=document.getElementById('slides');
-    let index=0,total=slides.children.length,stopped=false;
-    function go(i){index=(i+total)%total;slides.style.transform=`translateY(-${index*220}vh)`;}
-    function auto(){setInterval(()=>{if(!stopped)go(index+1);},20);} auto();
-    document.querySelector('.slider').addEventListener('wheel',e=>{stopped=true;go(index+(e.deltaY>0?1:-1));});
-    let sy=0,dy=0;
-    slides.addEventListener('touchstart',e=>{stopped=true;sy=e.touches[0].clientY;});
-    slides.addEventListener('touchend',e=>{dy=e.changedTouches[0].clientY-sy;
-      if(Math.abs(dy)>50)go(index+(dy<0?1:-1)); sy=0;dy=0;});
+ const slides = document.getElementById('slides');
+let index = 0,
+    total = slides.children.length,
+    stopped = false,
+    timer = null;
+
+function go(i) {
+  index = (i + total) % total;
+  slides.style.transform = `translateY(-${index * 185}vh)`;
+}
+
+function auto() {
+  timer = setInterval(() => {
+    if (!stopped) go(index + 0.5);
+  }, 6000); // 3 վրկ օրինակ
+}
+
+function stopAuto() {
+  stopped = true;
+  clearInterval(timer);
+}
+
+// մեկնարկում ենք ավտոմատը
+auto();
+
+// mouse wheel event
+document.querySelector('.slider').addEventListener('wheel', e => {
+  stopAuto();
+  go(index + (e.deltaY > 0 ? 1 : 1));
+});
+
+
+
+
+
+auto();
+
+// scroll event
+document.querySelector('.slider').addEventListener('wheel', e => {
+  stopped = true;
+  clearInterval(timer);
+  go(index + (e.deltaY > 0 ? 1 : -1));
+});
+
+// touch events
+let sy = 0, dy = 0;
+slides.addEventListener('touchstart', e => {
+  stopped = true;
+  clearInterval(timer);
+  sy = e.touches[0].clientY;
+});
+slides.addEventListener('touchend', e => {
+  dy = e.changedTouches[0].clientY - sy;
+  if (Math.abs(dy) > 90) go(index + (dy < 0 ? 1 : -1));
+  sy = 0;
+  dy = 0;
+});
+
+// click event → կանգնեցնի ավտոմատը
+slides.addEventListener('click', () => {
+  stop = true;
+  clearInterval(timer);
+});
+
+
   </script>
 </body>
 </html>
