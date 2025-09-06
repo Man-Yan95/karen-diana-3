@@ -1,0 +1,253 @@
+ @font-face {
+  font-family: 'EagleLake-Regular';
+  src: url(../fonts/Eagle_Lake/EagleLake-Regular.ttf);
+} :root {
+      --bg:#4c4c51; --panel:#44464c; --panel-2:#f9fbff;
+      --text:#f7f6f6; --muted:#494545; --accent:#fdfdfd;
+      --shadow:0 6px 24px rgba(41,40,40,.35);
+      --radius:18px;
+    }
+ *{box-sizing:border-box ; width: 100%;max-width: 1000px;}
+    body{margin:0;color:var(--text);background:var(--bg); font-family: 'EagleLake-Regular';color: #ecedf0  };  
+   
+    
+    .content {
+      overflow:hidden; /* որ վերևից իջնելուց թաքցնի */
+    }
+
+    .names {
+      font-size: clamp(24px, 6vw, 52px);
+      font-weight:700;
+      letter-spacing: .08em;
+      animation: dropDown 5s ease forwards;
+    }
+
+    .subtitle, .lead {
+      opacity:0;
+      transform:translateY(40px);
+      animation: fadeUp 3s ease forwards;
+    }
+
+    .subtitle {
+      animation-delay: 3s; /* հետո, երբ անունը ավարտի */
+      font-size: clamp(16px, 3vw, 22px);
+      margin-top:16px;
+       color:var(--muted);
+    }
+
+    .lead { color:var(--accent);
+      animation-delay: 5s; /* անուն + subtitle հետո */
+      font-size: clamp(18px, 3vw, 26px);
+      margin-top:8px;
+      font-weight:500;
+  
+    }
+    /* Hero content ռեսպոնսիվ և կենտրոնացված */
+.hero .content{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:0 12px; /* չթաքցնի տեքստը փոքր էկրաններում */
+  max-width:90%;  /* խուսափում է լայնության overflow-ից */
+  word-wrap:break-word;
+}
+
+/* Text scaling */
+.hero .names{font-size:clamp(16px,6vw,72px)}
+.hero .subtitle{font-size:clamp(10px,3vw,20px)}
+.hero .pill{font-size:clamp(12px,2.5vw,20px);padding:4px 8px}
+
+.hero .bg-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;  /* պահպանվում է aspect ratio */
+  max-height:100vh; 
+  border-radius: 18px; /* երբեք չի բարձրանա viewport-ից */
+}
+
+   
+ 
+    a{text-decoration:none;color:inherit}
+    .shell{ width: 100%; height: 100%;min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+    header{position:sticky;top:0;background:rgba(0,0,0,.4);backdrop-filter:blur(6px)}
+    header .row{display:flex;align-items:center;gap:12px;padding:10px 16px}
+    .brand{font-weight:700;letter-spacing:.2em;transition-duration:  3s ease  ; }
+    .timer{margin-left:auto;display:flex;gap:6px ;width: 30px;height: 30px;     flex-direction: row-reverse;}
+    .pill{background:var(--panel);padding:6px 10px;border-radius:999px;box-shadow:var(--shadow);width: 40px; height: 40px; background-color: #616163;}
+    .slider{overflow:hidden;position:relative;height:90vh}
+    .slides{display:flex;flex-direction:column;transition:15s ease}
+    .slide{min-height:100vh;display:grid;place-items:center;position:relative;justify-items: center;}
+    .hero{color:#fff;text-align:center}
+    .hero .bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
+    .hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.4)}
+    .names{font-size:clamp(28px,6vw,72px);font-weight:800}
+    .card{background:var(--panel);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin:16px}
+    .inner, .liner1, .liner2{padding:15px;display:grid;gap:12px;}
+    .title{font-size:22px;font-weight:700}
+
+    .row-item{padding:12px;background:var(--panel-2);border-radius:12px;cursor:pointer}
+    .media img{width:100%;height:410px;object-fit:cover}
+    .media .caption{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,.5);padding:6px 10px;border-radius:8px}
+    .cta .title{font-size:24px}
+    .black{background:#000;color:#fff;padding:26px;text-align:center}
+    .black .btn{display:inline-block;margin-top:12px;padding:10px 16px;border-radius:999px;background:#111}
+    .phone-fab{position:fixed;right:14px;bottom:14px}
+    .fab-btn{width:56px;height:56px;border-radius:50%;border:1px solid #333;background:var(--panel);cursor:pointer; display: grid;justify-content: center ;align-items: center;}
+    .call-sheet{position:fixed;inset:0;display:none;place-items:end center;background:rgba(0,0,0,.6)}
+    .call-sheet.active{display:grid}
+    .sheet{width:95%;max-width:480px;background:#0b0b0c;border-radius:16px 16px 0 0;padding:16px}
+    .nums{display:grid;gap:10px}
+    .num{display:flex;justify-content:space-between;padding:12px;background:#151518;border-radius:12px}
+    footer{text-align:center;padding:12px;color:#aaa}
+      @keyframes dropDown {
+      0% { transform: translateY(-120%); opacity:0; }
+      100% { transform: translateY(0); opacity:1; }
+    }
+
+    @keyframes fadeUp {
+      0% { opacity:0; transform: translateY(60px); }
+      100% { opacity:1; transform: translateY(0); }
+    };
+    /* Նոր սլայդների ձևավորում */
+.liner1, .liner2 {
+  position: relative;
+  display: grid;
+  place-items: center;
+
+  color: #fff;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.liner1::after, .liner2::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+}
+
+.liner1 .text-box, .liner2 .text-box {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(
+    rgba(71, 70, 70, 0.6),   
+    rgba(237, 214, 214, 0.783)  ) ;
+  padding: 20px 28px;
+  border-radius: 14px;
+  max-width: 90%;
+  margin-top: 100px; /* մի քիչ ներքև */
+  animation: fadeSlideUp 8s ease forwards;
+}
+
+.liner1 .text-box h2, .liner2 .text-box h2 {
+  font-size: clamp(22px, 5vw, 38px);
+  margin: 0 0 12px;
+}
+
+.liner1 .text-box p, .liner2 .text-box p {
+  font-size: clamp(14px, 3vw, 22px);
+  margin: 0;
+}
+
+/* Animation */
+@keyframes fadeSlideUp {
+  0% {opacity:0; transform: translateY(60px);}
+  100% {opacity:1; transform: translateY(0);}
+}
+
+    /* 850px և փոքր */
+@media (max-width:850px){
+  header .row{flex-direction:column;align-items:flex-start;gap:8px}
+  .brand{font-size:18px;letter-spacing:.12em}
+  .timer{margin-left:124px;gap:6px}
+  .pill{padding:6px 10px;font-size:13px}
+  .names{font-size:28px}
+  .subtitle{font-size:15px;padding:0 10px}
+  .card{margin:10px;border-radius:14px}
+  .inner{padding:16px;gap:10px}
+  .title{font-size:20px}
+  .lead{font-size:14px}
+  .row-item{font-size:14px;padding:12px}
+  .media img{height:220px}
+  .media .caption{font-size:13px;padding:5px 8px}
+  .cta .title{font-size:20px}
+  .black{padding:22px;font-size:15px}
+  .black .btn{font-size:14px;padding:10px 14px}
+  .fab-btn{width:48px;height:48px;font-size:18px}
+}
+
+/* 640px և փոքր */
+@media (max-width:640px){
+  .brand{font-size:16px;letter-spacing:.1em}
+  .names{font-size:24px}
+  .subtitle{font-size:14px}
+  .title{font-size:18px}
+  .lead{font-size:13px}
+  .media img{height:200px}
+  .cta .title{font-size:18px}
+  .black{padding:20px;font-size:14px}
+  .black .btn{font-size:13px;padding:8px 12px}
+  .fab-btn{width:46px;height:46px;font-size:17px}
+}
+
+/* 520px և փոքր */
+@media (max-width:520px){
+  .brand{font-size:15px;letter-spacing:.08em}
+  .names{font-size:22px}
+  .subtitle{font-size:13px}
+  .title{font-size:17px}
+  .lead{font-size:12px}
+  .media img{height:180px}
+  .cta .title{font-size:17px}
+  .black{padding:18px;font-size:13px}
+  .black .btn{font-size:12px;padding:8px 10px}
+  .fab-btn{width:44px;height:44px;font-size:16px}
+}
+
+/* 410px և փոքր */
+@media (max-width:410px){
+  .brand{font-size:14px;letter-spacing:.07em}
+  .names{font-size:20px}
+  .subtitle{font-size:12px}
+  .title{font-size:16px}
+  .lead{font-size:12px}
+  .media img{height:160px}
+  .cta .title{font-size:16px}
+  .black{padding:16px;font-size:12px}
+  .black .btn{font-size:12px;padding:7px 10px}
+  .fab-btn{width:42px;height:42px;font-size:15px}
+}
+
+/* 393px և փոքր */
+@media (max-width:393px){
+  .brand{font-size:13px;letter-spacing:.06em}
+  .names{font-size:18px}
+  .subtitle{font-size:11px}
+  .title{font-size:15px}
+  .lead{font-size:11px}
+  .media img{height:150px}
+  .cta .title{font-size:15px}
+  .black{padding:14px;font-size:11px}
+  .black .btn{font-size:11px;padding:6px 10px}
+  .fab-btn{width:40px;height:40px;font-size:14px}
+}
+
+/* 329px և փոքր */
+@media (max-width:329px){
+  .brand{font-size:12px;letter-spacing:.05em}
+  .names{font-size:16px}
+  .subtitle{font-size:10px}
+  .title{font-size:14px}
+  .lead{font-size:10px}
+  .media img{height:140px}
+  .cta .title{font-size:14px}
+  .black{padding:12px;font-size:10px}
+  .black .btn{font-size:10px;padding:5px 8px}
+  .fab-btn{width:38px;height:38px;font-size:13px}
+}
