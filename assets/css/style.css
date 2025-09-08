@@ -181,7 +181,8 @@
 
 /* 📱 Responsive */
 @media (max-width: 850px) {
-  .calendar-wrap {height: 300px; padding: 16px;}
+  .calendar-wrap {min-height: 300px;
+    height: 100%; padding: 16px;}
   .grid {grid-template-columns: repeat(7, 45px); grid-auto-rows: 45px;}
   .weekdays {
   display: grid;
@@ -378,7 +379,7 @@
   .black .btn{font-size:14px;padding:10px 14px}
   .fab-btn{width:48px;height:48px;font-size:18px}
     .slide3, .slide, .liner2{
-    height: auto;
+    height: 166px;
   }
 }
 
@@ -394,6 +395,9 @@
   .black{padding:20px;font-size:14px}
   .black .btn{font-size:13px;padding:8px 12px}
   .fab-btn{width:46px;height:46px;font-size:17px}
+    .slide3{
+    height: 168px;
+  }
 }
 
 /* 520px և փոքր */
@@ -409,7 +413,8 @@
   .black .btn{font-size:12px;padding:8px 10px}
   .fab-btn{width:44px;height:44px;font-size:16px}
    .slide3 {
-    height: 100px;
+    height: 166px;
+    
   }
 }
 
@@ -426,7 +431,8 @@
   .black .btn{font-size:12px;padding:7px 10px}
   .fab-btn{width:42px;height:42px;font-size:15px}
     .slide3 {
-    height: 100px;
+ 
+     height: 166px;
   }
 }
 
@@ -443,7 +449,8 @@
   .black .btn{font-size:11px;padding:6px 10px}
   .fab-btn{width:40px;height:40px;font-size:14px}
     .slide3 {
-    height: 100px;
+    height: 186px;
+     
   }
 }
 
@@ -452,7 +459,8 @@
   .brand{font-size:12px;letter-spacing:.05em}
   .names{font-size:16px}
   .slide3 {
-    height: 100px;
+    
+     height: 190px;
   }
   .subtitle{font-size:10px}
   .title{font-size:14px}
