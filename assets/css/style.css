@@ -278,7 +278,7 @@
     .pill{background:var(--panel);padding:6px 10px;border-radius:999px;box-shadow:var(--shadow);width: 40px; height: 40px; background-color: #616163;}
     .slider{overflow:hidden;position:relative;height:90vh}
     .slides{display:flex;flex-direction:column;transition:15s ease}
-    .slide{min-height:100vh; height: 100%;display:grid;place-items:center;position:relative;justify-items: center;}
+    .slide{min-height:84vh; height: 100%;display:grid;place-items:center;position:relative;justify-items: center;}
     .hero{color:#fff;text-align:center}
     .hero .bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
     .hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.4)}
@@ -355,7 +355,7 @@
 
 /* Animation */
 @keyframes fadeSlideUp {
-  0% {opacity:0; transform: translateY(60px);}
+  0% {opacity:0; transform: translateY(70px);}
   100% {opacity:1; transform: translateY(0);}
 }
 
@@ -363,7 +363,7 @@
 @media (max-width:850px){
   header .row{flex-direction:column;align-items:flex-start;gap:8px}
   .brand{font-size:18px;letter-spacing:.12em}
-  .timer{margin-left:124px;gap:6px}
+  .timer{margin-left:130px;gap:6px}
   .pill{padding:6px 10px;font-size:13px}
   .names{font-size:28px}
   .subtitle{font-size:15px;padding:0 10px}
@@ -372,13 +372,13 @@
   .title{font-size:20px}
   .lead{font-size:16px}
   .row-item{font-size:14px;padding:12px}
-  .media img{height:220px}
+  .media img{height:240px}
   .media .caption{font-size:13px;padding:5px 8px}
   .cta .title{font-size:20px}
   .black{padding:22px;font-size:15px}
   .black .btn{font-size:14px;padding:10px 14px}
   .fab-btn{width:48px;height:48px;font-size:18px}
-    .slide3, .slide, .liner2{
+    .slide3{
     height: 166px;
   }
 }
@@ -407,7 +407,7 @@
   .subtitle{font-size:13px}
   .title{font-size:17px}
   .lead{font-size:12px}
-  .media img{height:180px}
+  .media img{height:200px}
   .cta .title{font-size:17px}
   .black{padding:18px;font-size:13px}
   .black .btn{font-size:12px;padding:8px 10px}
@@ -425,7 +425,7 @@
   .subtitle{font-size:12px}
   .title{font-size:16px}
   .lead{font-size:12px}
-  .media img{height:160px}
+  .media img{height:180px}
   .cta .title{font-size:16px}
   .black{padding:16px;font-size:12px}
   .black .btn{font-size:12px;padding:7px 10px}
@@ -443,7 +443,7 @@
   .subtitle{font-size:11px}
   .title{font-size:15px}
   .lead{font-size:11px}
-  .media img{height:150px}
+  .media img{height:160px}
   .cta .title{font-size:15px}
   .black{padding:14px;font-size:11px}
   .black .btn{font-size:11px;padding:6px 10px}
@@ -465,7 +465,7 @@
   .subtitle{font-size:10px}
   .title{font-size:14px}
   .lead{font-size:10px}
-  .media img{height:140px}
+  .media img{height:150px}
   .cta .title{font-size:14px}
   .black{padding:12px;font-size:10px}
   .black .btn{font-size:10px;padding:5px 8px}
