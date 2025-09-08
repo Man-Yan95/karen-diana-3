@@ -377,6 +377,9 @@
   .black{padding:22px;font-size:15px}
   .black .btn{font-size:14px;padding:10px 14px}
   .fab-btn{width:48px;height:48px;font-size:18px}
+    .slide3, .slide, .liner2{
+    height: auto;
+  }
 }
 
 /* 640px և փոքր */
@@ -405,6 +408,9 @@
   .black{padding:18px;font-size:13px}
   .black .btn{font-size:12px;padding:8px 10px}
   .fab-btn{width:44px;height:44px;font-size:16px}
+    .slide3, .slide, .liner2{
+    height: auto;
+  }
 }
 
 /* 410px և փոքր */
@@ -419,6 +425,9 @@
   .black{padding:16px;font-size:12px}
   .black .btn{font-size:12px;padding:7px 10px}
   .fab-btn{width:42px;height:42px;font-size:15px}
+    .slide3, .slide, .liner2{
+    height: auto;
+  }
 }
 
 /* 393px և փոքր */
@@ -433,12 +442,18 @@
   .black{padding:14px;font-size:11px}
   .black .btn{font-size:11px;padding:6px 10px}
   .fab-btn{width:40px;height:40px;font-size:14px}
+    .slide3, .slide, .liner2{
+    height: auto;
+  }
 }
 
 /* 329px և փոքր */
 @media (max-width:329px){
   .brand{font-size:12px;letter-spacing:.05em}
   .names{font-size:16px}
+  .slide3, .slide, .liner2{
+    height: auto;
+  }
   .subtitle{font-size:10px}
   .title{font-size:14px}
   .lead{font-size:10px}
