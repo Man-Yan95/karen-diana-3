@@ -86,6 +86,10 @@ document.querySelector('.slider').addEventListener('wheel', e => {
 
 auto();
 
+
+
+
+
 // scroll event
 document.querySelector('.slider').addEventListener('wheel', e => {
   stopped = true;
@@ -112,16 +116,54 @@ slides.addEventListener('click', () => {
   stop = true;
   clearInterval(timer);
 });
-let paused = false;
 
-slides.addEventListener('click', () => {
-  if (!paused) {
-    stopAuto(); // կանգնեցնենք ավտոմատը
-    paused = true;
-  } else {
-    stopped = false;
-    auto(); // նորից սկսի ավտոմատը
-    paused = false;
-  }
-});
+
+
+
+
+ (function(){
+        const grid = document.getElementById('calendarGrid');
+        const todayText = document.getElementById('todayText');
+        const daysLeftEl = document.getElementById('daysLeft');
+
+        const Y = 2025, M = 9, SPECIAL = 10;
+        const daysInMonth = new Date(Y, M+1, 0).getDate();
+        const startDay = new Date(Y, M, 1).getDay(); // 0=Կիր...
+        // Armenian week: Երկ=1 => Monday. In JS getDay() Monday=1, Sunday=0. Adjust.
+        const offset = (startDay+6)%7; // shift so Monday=0
+
+        function buildDays(){
+          grid.innerHTML = '';
+          // add empty slots for offset
+          for(let i=0;i<offset;i++){
+            const empty = document.createElement('div');
+            grid.appendChild(empty);
+          }
+          for(let d=1; d<=daysInMonth; d++){
+            const cell = document.createElement('div');
+            cell.className = 'day';
+            if (d === SPECIAL){
+              cell.classList.add('day--special');
+              cell.innerHTML = '<div class="dot dot--big"><div class="dot dot--small"><div class="date-num">'+d+'</div></div></div>';
+            } else {
+              cell.innerHTML = '<div class="date-num">'+d+'</div>';
+            }
+            grid.appendChild(cell);
+          }
+        }
+
+        buildDays();
+
+        const now = new Date();
+        todayText.textContent = now.toLocaleDateString('hy-AM', {year:'numeric',month:'numeric',day:'numeric'});
+        const specialDate = new Date(Y, M, SPECIAL,0,0,0);
+        function updateCountdown(){
+          const msPerDay = 1000*60*60*24;
+          const diff = Math.ceil((specialDate - new Date())/msPerDay);
+          if (diff > 0) daysLeftEl.textContent = diff + ' օր';
+          else if (diff === 0) daysLeftEl.textContent = 'Այսօր';
+          else daysLeftEl.textContent = Math.abs(diff) + ' օր առաջ';
+        }
+        updateCountdown();
+      })();
 
