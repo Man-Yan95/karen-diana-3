@@ -32,10 +32,10 @@
       animation-delay: 3s; /* հետո, երբ անունը ավարտի */
       font-size: clamp(16px, 3vw, 22px);
       margin-top:16px;
-       color:var(--muted);
+       color:var(--accent);
     }
 
-    .lead { color:var(--accent);
+    .lead { color:var(--muted);
       animation-delay: 5s; /* անուն + subtitle հետո */
       font-size: clamp(20px, 3vw, 30px);
       margin-top:8px;
@@ -248,6 +248,61 @@
   font-size:16px;
 }
 }
+
+    .invite-section::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.55); /* մթնեցնող շերտ */
+    }
+
+    .invite-content {
+      position: relative;
+    
+      z-index: 1;
+      background-color: #4945458a;
+    }
+
+    .invite-section h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .buttons,
+    .phone-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+
+    .btn, .phone-links a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #383838; /* սև */
+      color: white;
+      padding: 12px 22px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .btn i, .phone-links a i {
+      font-size: 1.2rem;
+    }
+
+    .btn:hover, .phone-links a:hover {
+      background: transparent;
+      border: 2px solid #cad8d8; /* ոսկեգույն */
+      color: #d4af37;
+    }
+
 @media (max-width: 329px) {
   .grid {grid-template-columns: repeat(7, 26px); grid-auto-rows: 26px;}
   .calendar-wrap .header h2 {font-size:12px;}

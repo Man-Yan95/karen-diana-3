@@ -44,78 +44,51 @@
     btn.onclick=()=>{if(audio.paused){audio.play();btn.textContent='⏸️';}else{audio.pause();btn.textContent='▶️';}}
 
     // call sheet
-    const fab=document.getElementById('fab-call'), sheet=document.getElementById('call-sheet');
-    fab.onclick=()=>sheet.classList.add('active');
-    sheet.onclick=e=>{if(e.target===sheet)sheet.classList.remove('active');}
+    // const fab=document.getElementById('fab-call'), sheet=document.getElementById('call-sheet');
+    // fab.onclick=()=>sheet.classList.add('active');
+    // sheet.onclick=e=>{if(e.target===sheet)sheet.classList.remove('active');}
 
-    // slider
- const slides = document.getElementById('slides');
-let index = 0,
-    total = slides.children.length,
-    stopped = false,
-    timer = null;
+
+// SLAYDER
+
+const slides = document.getElementById('slides');
+let index = 0;
+let total = slides.children.length;
+
+// 👉 slide-ի բարձրությունը (100vh = ամբողջ էկրան)
+const slideHeight = 100;
 
 function go(i) {
   index = (i + total) % total;
-  slides.style.transform = `translateY(-${index * 185}vh)`;
+  slides.style.transform = `translateY(-${index * slideHeight}vh)`;
 }
 
-function auto() {
-  timer = setInterval(() => {
-    if (!stopped) go(index + 0.5);
-  }, 6000); // 3 վրկ օրինակ
-}
-
-function stopAuto() {
-  stopped = true;
-  clearInterval(timer);
-}
-
-// մեկնարկում ենք ավտոմատը
-auto();
-
-// mouse wheel event
+// scroll event → շարժում միայն user–ի սքրոլով
 document.querySelector('.slider').addEventListener('wheel', e => {
-  stopAuto();
-  go(index + (e.deltaY > 0 ? 1 : 1));
-});
-
-
-
-
-
-auto();
-
-
-
-
-
-// scroll event
-document.querySelector('.slider').addEventListener('wheel', e => {
-  stopped = true;
-  clearInterval(timer);
   go(index + (e.deltaY > 0 ? 1 : -1));
 });
 
-// touch events
-let sy = 0, dy = 0;
+// touch event → շարժում մատով
+let sy = 0;
 slides.addEventListener('touchstart', e => {
-  stopped = true;
-  clearInterval(timer);
   sy = e.touches[0].clientY;
 });
 slides.addEventListener('touchend', e => {
-  dy = e.changedTouches[0].clientY - sy;
+  const dy = e.changedTouches[0].clientY - sy;
   if (Math.abs(dy) > 90) go(index + (dy < 0 ? 1 : -1));
   sy = 0;
-  dy = 0;
 });
 
-// click event → կանգնեցնի ավտոմատը
+// optional → click event-ով էլ կարող ես անցկացնել
 slides.addEventListener('click', () => {
-  stop = true;
-  clearInterval(timer);
+  go(index + 1);
 });
+
+
+
+
+
+
 
 
 
